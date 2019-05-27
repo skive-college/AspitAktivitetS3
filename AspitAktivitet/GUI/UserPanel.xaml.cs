@@ -1,5 +1,4 @@
-﻿using AspitAktivitet.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,22 +16,13 @@ using System.Windows.Shapes;
 namespace AspitAktivitet.GUI
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for UserPanel.xaml
     /// </summary>
-    public partial class Login : UserControl
+    public partial class UserPanel : UserControl
     {
-        MainWindow parent;
-        public Login(MainWindow window)
+        public UserPanel()
         {
             InitializeComponent();
-            parent = window;
-        }
-
-        private void CmdLogin_Click(object sender, RoutedEventArgs e)
-        {
-            User u = null;
-            // Valider Bruger og kald tilbage til MainWindow "parrent" null hvis ikke gyldig
-            parent.LoginSucces(u);
         }
     }
 }

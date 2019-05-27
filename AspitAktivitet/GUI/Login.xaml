@@ -19,9 +19,9 @@
         <StackPanel Grid.Column="1">
             <Label Content="Brugernavn"/>
             <TextBox x:Name="txtUsername"/>
-            <Label Content="kodeord"/>
+            <Label Content="Kodeord"/>
             <TextBox x:Name="txtPassword"/>
-            <Button Content="Log på" Margin="0 10 0 0"/>
+            <Button x:Name="cmdLogin" Content="Log på" Margin="0 10 0 0" Click="CmdLogin_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>
