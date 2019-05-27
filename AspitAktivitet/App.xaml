@@ -9,5 +9,8 @@
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="Margin" Value="0 10 0 0"/>
         </Style>
+        <Style TargetType="StackPanel">
+            <Setter Property="Margin" Value="10"/>
+        </Style>
     </Application.Resources>
 </Application>

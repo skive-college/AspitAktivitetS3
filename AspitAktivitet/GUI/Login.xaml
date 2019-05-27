@@ -16,7 +16,7 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="1" Margin="10">
+        <StackPanel Grid.Column="1">
             <Label Content="Brugernavn"/>
             <TextBox x:Name="txtUsername"/>
             <Label Content="kodeord"/>
