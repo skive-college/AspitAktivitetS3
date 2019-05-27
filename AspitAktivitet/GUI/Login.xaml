@@ -21,7 +21,7 @@
             <TextBox x:Name="txtUsername"/>
             <Label Content="kodeord"/>
             <TextBox x:Name="txtPassword"/>
-            <Button Content="Log på" Width="50" HorizontalAlignment="Right" Margin="0 10 0 0"/>
+            <Button Content="Log på" Margin="0 10 0 0"/>
         </StackPanel>
     </Grid>
 </UserControl>
