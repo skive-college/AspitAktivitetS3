@@ -16,7 +16,7 @@
             <Setter Property="Margin" Value="0 10 0 0"/>
         </Style>
     </UserControl.Resources>
-    <Grid Background="White">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
