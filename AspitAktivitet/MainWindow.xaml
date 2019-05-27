@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AspitAktivitet"
         mc:Ignorable="d"
         Title="Aspit Idræt" Height="450" Width="800">
-    <Grid x:Name="MainWindow">
+    <Grid x:Name="window">
         
     </Grid>
 </Window>

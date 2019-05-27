@@ -25,7 +25,7 @@ namespace AspitAktivitet
         {
             InitializeComponent();
 
-            MainWindow.Children.Add(new Login());
+            window.Children.Add(new Login());
         }
     }
 }
