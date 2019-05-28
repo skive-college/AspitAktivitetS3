@@ -32,7 +32,7 @@ namespace AspitAktivitet.GUI
         {
             User u = null;
 
-            u = new User() { Name = txtUsername.Text, Password = txtPassword.Password};
+            u = new User() { Name = txtUsername.Text, Password = txtPassword.Password, Admin = true};
             // Valider Bruger og kald tilbage til MainWindow "parrent" null hvis ikke gyldig
             parent.LoginSucces(u);
         }

@@ -31,9 +31,21 @@
         </StackPanel>
         <StackPanel Grid.Column="1">
             <Label Content="Liste af bruger"/>
-            <ListView x:Name="lwUsers" Height="250"/>
+            <ListView x:Name="lwUsers" ItemsSource="{Binding}" Height="250">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Label Content="{Binding Name}"/>
+                            <Label Content="{Binding Admin}"/>
+                        </Grid>
+                        
+                            
+                        
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-            <Button x:Name="cmdDelete" Content="Slet"/>
+            <Button x:Name="cmdDelete" Content="Slet" Click="CmdDelete_Click"/>
             
         </StackPanel>
     </Grid>

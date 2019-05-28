@@ -25,25 +25,50 @@ namespace AspitAktivitet.GUI
         public AdminUsers()
         {
             InitializeComponent();
+            load();
+        }
+        private void load()
+        {
             using (DB db = new DB())
             {
                 lwUsers.DataContext = db.Users.ToList();
             }
         }
-
         private void CmdCreate_Click(object sender, RoutedEventArgs e)
         {
-            using (DB db = new DB())
+            if (txtName.Text != "" && txtPassword.Text != "")
             {
-                bool admin = false;
-                if(cbAdmin.IsChecked == true)
+                using (DB db = new DB())
                 {
-                    admin = true;
-                }
-                User u = new User() { Name = txtName.Text, Password = txtPassword.Text, Admin = admin};
+                    bool admin = false;
+                    if (cbAdmin.IsChecked == true)
+                    {
+                        admin = true;
+                    }
+                    User u = new User() { Name = txtName.Text, Password = txtPassword.Text, Admin = admin };
 
-                db.Users.Add(u);
-                db.SaveChanges();
+                    db.Users.Add(u);
+                    db.SaveChanges();
+                    txtName.Text = "";
+                    txtPassword.Text = "";
+                }
+                load();
+            }
+        }
+
+        private void CmdDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (lwUsers.SelectedIndex != -1)
+            {
+                User u = lwUsers.SelectedItem as User;
+
+                using (DB db = new DB())
+                {
+                    db.Users.Attach(u);
+                    db.Users.Remove(u);
+                    db.SaveChanges();
+                }
+                load();
             }
         }
     }
