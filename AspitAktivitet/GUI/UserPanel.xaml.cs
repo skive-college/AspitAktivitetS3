@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AspitAktivitet.Healpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,9 @@ namespace AspitAktivitet.GUI
         public UserPanel()
         {
             InitializeComponent();
+            lblWeek.Content = Util.getWeek(DateTime.Now);
+
+            activityPanel.Children.Add(new RadioButton() {Content = "Lav dynamisk"});
         }
     }
 }

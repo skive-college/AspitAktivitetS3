@@ -6,7 +6,27 @@
              xmlns:local="clr-namespace:AspitAktivitet.GUI"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="activityPanel" Grid.Column="0">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Uge "/>
+                <Label x:Name="lblWeek"/>
+                <Label Content=" - Aktiviteter"/>
+            </StackPanel>
+
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Bruger :"/>
+                <Label x:Name="lblBruger"/>
+            </StackPanel>
+            <Button x:Name="cmdSignOut" Content="Log ud"/>
+        </StackPanel>
+        <Button Grid.Column="1" x:Name="cmdTilmeld" Content="Tilmeld" Margin="0 0 10 10" VerticalAlignment="Bottom"/>
+
     </Grid>
 </UserControl>
