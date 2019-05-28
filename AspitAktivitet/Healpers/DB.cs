@@ -11,5 +11,6 @@ namespace AspitAktivitet.Healpers
     public class DB : DbContext
     {
         public DbSet<User> Users { get; set; }
+
     }
 }
