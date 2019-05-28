@@ -32,8 +32,6 @@ namespace AspitAktivitet.GUI
         private void CmdLogin_Click(object sender, RoutedEventArgs e)
         {
             User u = null;
-
-            u = new User() { Name = txtUsername.Text, Password = txtPassword.Password };
             // Valider Bruger og kald tilbage til MainWindow "parrent" null hvis ikke gyldig
             using (DB db = new DB())
             {
@@ -44,7 +42,7 @@ namespace AspitAktivitet.GUI
 
                     us.Password = txtPassword.Password;
                 }
-                u = (db.Users.Where(o => o.Name == us.Name && o.Password == us.Password)) as User;
+                u = (db.Users.Where(o => o.Name == us.Name && o.Password == us.Password)).FirstOrDefault();
 
             }
             parent.LoginSucces(u);

@@ -1,4 +1,5 @@
 ﻿using AspitAktivitet.GUI;
+using AspitAktivitet.Healpers;
 using AspitAktivitet.Models;
 using System;
 using System.Collections.Generic;
@@ -29,8 +30,21 @@ namespace AspitAktivitet
             InitializeComponent();
             l = new Login(this);
             window.Children.Add(l);
+            deafaultUSer();
         }
-
+        private void deafaultUSer()
+        {
+            try
+            {
+                using (DB db = new DB())
+                {
+                    User u = new User() { Name = "Admin", Password = "password", Admin = true };
+                    db.Users.Add(u);
+                    db.SaveChanges();
+                }
+            }
+            catch { }
+        }
         public void LoginSucces(User u)
         {
 
