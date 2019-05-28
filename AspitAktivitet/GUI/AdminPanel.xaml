@@ -9,7 +9,7 @@
     <Grid>
         <TabControl>
             <TabItem Header="Plan">
-                
+                <local:AdminPlans/>
             </TabItem>
             <TabItem Header="Bruger">
                 <local:AdminUsers/>

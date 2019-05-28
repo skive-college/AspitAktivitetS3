@@ -6,7 +6,25 @@
              xmlns:local="clr-namespace:AspitAktivitet.GUI"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+             
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="9*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Label Content="Mulige"/>
+            <ListView x:Name="lwUnassigned"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Button x:Name="cmbAssigned" Content=">" Margin=" 0 200 0 0"/>
+            <Button x:Name="cmbUnassigned" Content=""/>
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <Label Content="Tildelt"/>
+            <ListView x:Name="lwAssigned"/>
+        </StackPanel>    
             
     </Grid>
 </UserControl>
