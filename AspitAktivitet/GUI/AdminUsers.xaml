@@ -35,8 +35,12 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                            <Label Content="{Binding Name}"/>
-                            <Label Content="{Binding Admin}"/>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="{Binding Name}"/>
+                            <Label Grid.Column="1" Content="{Binding Admin}"/>
                         </Grid>
                         
                             

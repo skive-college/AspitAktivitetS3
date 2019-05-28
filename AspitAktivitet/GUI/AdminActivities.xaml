@@ -15,12 +15,16 @@
             <Label Content="Opret en aktivitet" />
             <Label Content="Navn:"/>
             <TextBox Name="txtName"/>
-            <Button Content="Opret"/>
+            <Button x:Name="cmdCreate" Content="Opret" Click="CmdCreate_Click"/>
         </StackPanel>
         <StackPanel Grid.Column="1">
             <Label Content="Liste af aktiviteter"/>
-            <ListView Height="250">
-                <!--Insert content from DB-->
+            <ListView x:Name="lwActivities" ItemsSource="{Binding}" Height="250">
+                <ListView.ItemTemplate>
+                    <DataTemplate>                        
+                            <Label Content="{Binding Name}"/>                        
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
             <Button Content="Slet"/>
         </StackPanel>

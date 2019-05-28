@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AspitAktivitet.Healpers;
+using AspitAktivitet.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,31 @@ namespace AspitAktivitet.GUI
         public AdminActivities()
         {
             InitializeComponent();
+            load();
+        }
+
+        private void load()
+        {
+            using (DB db = new DB())
+            {
+                lwActivities.DataContext = db.Activities.ToList();
+            }
+        }
+
+        private void CmdCreate_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtName.Text != "")
+            {
+                using (DB db = new DB())
+                {
+                    Activity a = new Activity() { Name = txtName.Text };
+
+                    db.Activities.Add(a);
+                    db.SaveChanges();
+                    txtName.Text = "";
+                }
+                load();
+            }
         }
     }
 }
