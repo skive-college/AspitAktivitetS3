@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AspitAktivitet.Healpers;
+using AspitAktivitet.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,26 @@ namespace AspitAktivitet.GUI
         public AdminUsers()
         {
             InitializeComponent();
+            using (DB db = new DB())
+            {
+                lwUsers.DataContext = db.Users.ToList();
+            }
+        }
+
+        private void CmdCreate_Click(object sender, RoutedEventArgs e)
+        {
+            using (DB db = new DB())
+            {
+                bool admin = false;
+                if(cbAdmin.IsChecked == true)
+                {
+                    admin = true;
+                }
+                User u = new User() { Name = txtName.Text, Password = txtPassword.Text, Admin = admin};
+
+                db.Users.Add(u);
+                db.SaveChanges();
+            }
         }
     }
 }

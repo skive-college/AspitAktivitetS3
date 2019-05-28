@@ -15,23 +15,24 @@
             <Label Content="Opret en bruger" />
             <Label Content="Navn:"/>
             <TextBox Name="txtName"/>
-            <CheckBox Content="Admin"/>
+            <Label Content="Password:"/>
+            <TextBox Name="txtPassword"/>
+            <CheckBox x:Name="cbAdmin" Content="Admin"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Button x:Name="cmdUpdate" Grid.Column="2" Content="Opdater"/>
-                <Button x:Name="cmdCreate" Grid.Column="3" Content="Opret"/>
+                <Button x:Name="cmdCreate" Grid.Column="3" Content="Opret" Click="CmdCreate_Click"/>
             </Grid>
         </StackPanel>
         <StackPanel Grid.Column="1">
             <Label Content="Liste af bruger"/>
-            <ListView Height="250">
-                <!--Insert content from DB-->
-            </ListView>
+            <ListView x:Name="lwUsers" Height="250"/>
+
             <Button x:Name="cmdDelete" Content="Slet"/>
             
         </StackPanel>
