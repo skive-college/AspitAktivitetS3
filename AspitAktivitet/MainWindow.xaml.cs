@@ -36,6 +36,7 @@ namespace AspitAktivitet
 
             if (u != null)
             {
+                window.Children.Remove(l);
                 if (u.Admin == true)
                 {
                     window.Children.Add(new AdminPanel());
