@@ -20,7 +20,7 @@
             <Label Content="Brugernavn"/>
             <TextBox x:Name="txtUsername"/>
             <Label Content="Kodeord"/>
-            <PasswordBox x:Name="txtPassword"/>
+            <PasswordBox x:Name="txtPassword" KeyDown="TxtPassword_KeyDown"/>
             <Button x:Name="cmdLogin" Content="Log på" Margin="0 10 0 0" Click="CmdLogin_Click"/>
         </StackPanel>
     </Grid>
