@@ -31,6 +31,12 @@ namespace AspitAktivitet.GUI
 
         private void CmdLogin_Click(object sender, RoutedEventArgs e)
         {
+            validate();
+
+        }
+
+        private void validate()
+        {
             User u = null;
             // Valider Bruger og kald tilbage til MainWindow "parrent" null hvis ikke gyldig
             using (DB db = new DB())
@@ -46,7 +52,14 @@ namespace AspitAktivitet.GUI
 
             }
             parent.LoginSucces(u);
+        }
 
+        private void TxtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                validate();
+            }
         }
     }
 }
