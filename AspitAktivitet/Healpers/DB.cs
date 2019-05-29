@@ -14,5 +14,9 @@ namespace AspitAktivitet.Healpers
 
         public DbSet<Activity> Activities { get; set; }
 
+        public DbSet<Planned> PlannedActivities { get; set; }
+
+        public DbSet<Register> Registrations { get; set; }
+
     }
 }
