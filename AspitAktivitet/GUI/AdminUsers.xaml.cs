@@ -51,7 +51,7 @@ namespace AspitAktivitet.GUI
                     db.SaveChanges();
                     txtName.Text = "";
                     txtPassword.Text = "";
-                }
+                    cbAdmin.IsChecked = false;                }
                 load();
             }
         }
@@ -70,6 +70,58 @@ namespace AspitAktivitet.GUI
                 }
                 load();
             }
+        }
+
+        private void CmdEdit_Click(object sender, RoutedEventArgs e)
+        {
+            if (lwUsers.SelectedIndex != -1)
+            {
+                User u = lwUsers.SelectedItem as User;
+
+                using (DB db = new DB())
+                {
+                    db.Users.Attach(u);
+                    txtName.Text = u.Name;
+                    txtPassword.Text = u.Password;
+                    cbAdmin.IsChecked = u.Admin;
+                }
+            }
+            cmdUpdate.IsEnabled = true;
+            cmdCreate.IsEnabled = false;
+        }
+
+        private void CmdUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            if (lwUsers.SelectedIndex != -1)
+            {
+                User u = lwUsers.SelectedItem as User;
+
+                using (DB db = new DB())
+                {
+                    db.Users.Attach(u);
+                    u.Name = txtName.Text;
+                    u.Password = txtPassword.Text;
+                    bool admin = false;
+                    if (cbAdmin.IsChecked == true)
+                    {
+                        admin = true;
+                    }
+                    u.Admin = admin;
+                    db.SaveChanges();
+                    txtName.Text = "";
+                    txtPassword.Text = "";
+                    cbAdmin.IsChecked = false;
+                }
+                load();
+            }
+            cmdUpdate.IsEnabled = false;
+            cmdCreate.IsEnabled = true;
+        }
+
+        private void LwUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            cmdEdit.IsEnabled = true;
+            cmdDelete.IsEnabled = true;
         }
     }
 }
