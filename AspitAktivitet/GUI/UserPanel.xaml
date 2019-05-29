@@ -24,7 +24,7 @@
                 <Label Content="Bruger :"/>
                 <Label x:Name="lblBruger"/>
             </StackPanel>
-            <Button x:Name="cmdSignOut" Content="Log ud"/>
+            <Button x:Name="cmdSignOut" Content="Log ud" Click="CmdSignOut_Click"/>
         </StackPanel>
         <Button Grid.Column="1" x:Name="cmdTilmeld" Content="Tilmeld" Margin="0 0 10 10" VerticalAlignment="Bottom"/>
 

@@ -57,10 +57,16 @@ namespace AspitAktivitet
                 }
                 else
                 {
-                    window.Children.Add(new UserPanel());
+                    window.Children.Add(new UserPanel(u, this));
                 }
             }
             
+        }
+
+        public void logout()
+        {
+            window.Children.Clear();
+            window.Children.Add(l);
         }
     }
 }

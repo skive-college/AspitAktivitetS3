@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AspitAktivitet.Healpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,21 @@ namespace AspitAktivitet.GUI
         public AdminPlans()
         {
             InitializeComponent();
+            cmbUnassigned.Content = "<";
+            for (int i = 0; i < 53; i++)
+            {
+                Week.Items.Add("Uge " + (i + 1));
+            }
+            Week.SelectedIndex = Util.getWeek(DateTime.Now) -1;
+            load();
+        }
+
+        private void load()
+        {
+            using (DB db = new DB())
+            {
+                lwUnassigned.DataContext = db.Activities.ToList();
+            }
         }
     }
 }
