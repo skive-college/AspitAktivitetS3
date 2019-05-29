@@ -19,7 +19,7 @@
         </StackPanel>
         <StackPanel Grid.Column="1">
             <Button x:Name="cmbAssigned" Content=">" Margin=" 0 200 0 0"/>
-            <Button x:Name="cmbUnassigned" Content=""/>
+            <Button x:Name="cmbUnassigned" Content="\>"/>
         </StackPanel>
         <StackPanel Grid.Column="2">
             <Label Content="Tildelt"/>
