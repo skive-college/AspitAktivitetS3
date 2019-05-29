@@ -33,11 +33,18 @@ namespace AspitAktivitet.GUI
             lblWeek.Content = Util.getWeek(DateTime.Now);
 
             DB db = new DB();
-            for (int i = 0; i < db.GetOffers().Count; i++)
+            foreach(Activity r in db.GetOffers(DateTime.Now))
             {
+                RadioButton rd = new RadioButton();
+                Thickness margin = rd.Margin;
+                margin.Left = 10;
+                margin.Bottom = 10;
+                rd.Margin = margin;
+                rd.Content = r.Name;
 
+                activityPanel.Children.Add(rd);
             }
-            activityPanel.Children.Add(new RadioButton() {Content = "Lav dynamisk"});
+            
         }
 
         private void CmdSignOut_Click(object sender, RoutedEventArgs e)

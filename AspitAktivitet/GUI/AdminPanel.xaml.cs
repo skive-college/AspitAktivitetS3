@@ -20,9 +20,17 @@ namespace AspitAktivitet.GUI
     /// </summary>
     public partial class AdminPanel : UserControl
     {
-        public AdminPanel()
+        MainWindow parrent;
+        public AdminPanel(MainWindow mW)
         {
+            parrent = mW;
             InitializeComponent();
+        }
+
+        private void CmdLogout_Click(object sender, RoutedEventArgs e)
+        {
+            parrent.logout();
+
         }
     }
 }

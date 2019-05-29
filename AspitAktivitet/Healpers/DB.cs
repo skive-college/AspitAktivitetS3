@@ -18,11 +18,18 @@ namespace AspitAktivitet.Healpers
 
         public DbSet<Register> Registrations { get; set; }
 
-        public List<Activity> GetOffers()
+        public List<Activity> GetOffers(DateTime nu)
         {
+            int week = Util.getWeek(nu);
+
             List<Activity> Retur = new List<Activity>();
 
-
+            var quary = from r in PlannedActivities
+                        join a in Activities on r.ActivtyID equals a.ID
+                        where nu.Year == r.Date.Year
+                        && week == r.WeekNumber
+                        select a;
+            Retur = quary.ToList();
             return Retur;
         }
 

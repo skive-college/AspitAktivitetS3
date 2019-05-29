@@ -114,6 +114,7 @@
     <Compile Include="GUI\UserPanel.xaml.cs">
       <DependentUpon>UserPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Healpers\DateWrapper.cs" />
     <Compile Include="Healpers\DB.cs" />
     <Compile Include="Healpers\Util.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -133,6 +134,10 @@
     <Compile Include="Migrations\201905290700550_Added-stuff.cs" />
     <Compile Include="Migrations\201905290700550_Added-stuff.Designer.cs">
       <DependentUpon>201905290700550_Added-stuff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905291305250_tes.cs" />
+    <Compile Include="Migrations\201905291305250_tes.Designer.cs">
+      <DependentUpon>201905291305250_tes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -160,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905290700550_Added-stuff.resx">
       <DependentUpon>201905290700550_Added-stuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905291305250_tes.resx">
+      <DependentUpon>201905291305250_tes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

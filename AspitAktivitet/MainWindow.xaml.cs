@@ -53,7 +53,7 @@ namespace AspitAktivitet
                 window.Children.Remove(l);
                 if (u.Admin == true)
                 {
-                    window.Children.Add(new AdminPanel());
+                    window.Children.Add(new AdminPanel(this));
                 }
                 else
                 {

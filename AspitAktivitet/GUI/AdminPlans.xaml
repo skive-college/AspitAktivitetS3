@@ -15,7 +15,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
             <Label Content="Mulige"/>
-            <ListView x:Name="lwUnassigned" ItemsSource="{Binding}" Height="306">
+            <ListView x:Name="lwUnassigned" ItemsSource="{Binding}" Height="286">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Label Content="{Binding Name}"/>
@@ -29,9 +29,18 @@
         </StackPanel>
         <StackPanel Grid.Column="2">
             <Label Content="Uge"/>
-            <ComboBox x:Name="Week"/>
+            <ComboBox x:Name="Week" ItemsSource="{Binding}" SelectionChanged="Week_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="0">
+                            <Label  Content="Uge: "/>
+                            <Label Content="{Binding Week}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <Label Content="Tildelt"/>
-            <ListView x:Name="lwAssigned" ItemsSource="{Binding}" Height="260">
+            <ListView x:Name="lwAssigned" ItemsSource="{Binding}" Height="226">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Label Content="{Binding Name}"/>

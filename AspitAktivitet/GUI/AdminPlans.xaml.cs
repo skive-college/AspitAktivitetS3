@@ -1,4 +1,5 @@
 ﻿using AspitAktivitet.Healpers;
+using AspitAktivitet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,14 +26,20 @@ namespace AspitAktivitet.GUI
         {
             InitializeComponent();
             cmbUnassigned.Content = "<";
+            DateTime d = DateTime.Now;
+
+            d = new DateTime(d.Year, 1, 1);
+            List<DateWrapper> uger = new List<DateWrapper>();
             for (int i = 0; i < 53; i++)
             {
-                Week.Items.Add("Uge " + (i + 1));
+                uger.Add(new DateWrapper(d));
+                d = d.AddDays(7);
             }
-            Week.SelectedIndex = Util.getWeek(DateTime.Now) -1;
+            Week.DataContext = uger;
+            Week.SelectedIndex = Util.getWeek(DateTime.Now) - 1;
             load();
         }
-
+        
         private void load()
         {
             using (DB db = new DB())
@@ -41,13 +48,51 @@ namespace AspitAktivitet.GUI
             }
         }
 
+        private void loadPlaned()
+        {
+            using (DB db = new DB())
+            {
+                if (Week.SelectedIndex != -1)
+                { 
+                    DateTime d = (Week.SelectedItem as DateWrapper).Date;
+                    List<Activity> l = db.GetOffers(d);
+                    lwAssigned.DataContext = l;
+                }
+            }
+        }
         private void CmbAssigned_Click(object sender, RoutedEventArgs e)
         {
-            //not done_______________________________________________________________________
-            if (lwUnassigned != lwAssigned)
+           
+            if (lwUnassigned.SelectedIndex != -1)
             {
-                lwAssigned.Items.Add(lwUnassigned.SelectedItem);
+                using (DB db = new DB())
+                {
+                    try
+                    {
+                        DateTime d = (Week.SelectedItem as DateWrapper).Date;
+                        Activity a = lwUnassigned.SelectedItem as Activity;
+
+                        Planned p = new Planned() { ActivtyID = a.ID, Date = d };
+                        db.PlannedActivities.Add(p);
+                        db.SaveChanges();
+
+                        loadPlaned();
+
+                    }
+                    catch(Exception ex)
+                    {
+
+                    }
+                    
+
+                }
+                    
             }
+        }
+
+        private void Week_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            loadPlaned();
         }
     }
 }
