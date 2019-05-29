@@ -25,13 +25,13 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="cmdUpdate" Grid.Column="2" Content="Opdater"/>
-                <Button x:Name="cmdCreate" Grid.Column="3" Content="Opret" Click="CmdCreate_Click"/>
+                <Button x:Name="cmdUpdate" Grid.Column="2" Content="Opdater" Click="CmdUpdate_Click" IsEnabled="False" />
+                <Button x:Name="cmdCreate" Grid.Column="3" Content="Opret" Click="CmdCreate_Click" IsEnabled="true"/>
             </Grid>
         </StackPanel>
         <StackPanel Grid.Column="1">
-            <Label Content="Liste af bruger"/>
-            <ListView x:Name="lwUsers" ItemsSource="{Binding}" Height="250">
+            <Label Content="Liste af brugere"/>
+            <ListView x:Name="lwUsers" ItemsSource="{Binding}" Height="250" SelectionChanged="LwUsers_SelectionChanged">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -42,15 +42,19 @@
                             <Label Grid.Column="0" Content="{Binding Name}"/>
                             <Label Grid.Column="1" Content="{Binding Admin}"/>
                         </Grid>
-                        
-                            
-                        
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
-            <Button x:Name="cmdDelete" Content="Slet" Click="CmdDelete_Click"/>
-            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="cmdEdit" Grid.Column="2" Content="Rediger" Click="CmdEdit_Click" IsEnabled="False"/>
+                <Button x:Name="cmdDelete" Grid.Column="3" Content="Slet" Click="CmdDelete_Click" IsEnabled="False"/>
+            </Grid>
         </StackPanel>
     </Grid>
 </UserControl>

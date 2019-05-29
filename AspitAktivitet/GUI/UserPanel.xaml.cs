@@ -32,6 +32,11 @@ namespace AspitAktivitet.GUI
             lblBruger.Content = current.Name;
             lblWeek.Content = Util.getWeek(DateTime.Now);
 
+            DB db = new DB();
+            for (int i = 0; i < db.GetOffers().Count; i++)
+            {
+
+            }
             activityPanel.Children.Add(new RadioButton() {Content = "Lav dynamisk"});
         }
 

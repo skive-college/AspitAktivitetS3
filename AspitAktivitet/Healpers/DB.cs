@@ -18,5 +18,14 @@ namespace AspitAktivitet.Healpers
 
         public DbSet<Register> Registrations { get; set; }
 
+        public List<Activity> GetOffers()
+        {
+            List<Activity> Retur = new List<Activity>();
+
+
+            return Retur;
+        }
+
+
     }
 }
