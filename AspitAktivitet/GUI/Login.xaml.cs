@@ -51,6 +51,11 @@ namespace AspitAktivitet.GUI
                 u = (db.Users.Where(o => o.Name == us.Name && o.Password == us.Password)).FirstOrDefault();
 
             }
+            if(u != null)
+            {
+                txtUsername.Text = "";
+                txtPassword.Password = "";
+            }
             parent.LoginSucces(u);
         }
 
