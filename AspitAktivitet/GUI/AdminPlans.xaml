@@ -23,7 +23,7 @@
         </StackPanel>
         <StackPanel Grid.Column="2">
             <Label Content="Uge"/>
-            <ComboBox x:Name="Week" SelectionChanged="Week_SelectionChanged"/>
+            <ComboBox x:Name="Week"/>
             <Label Content="Tildelt"/>
             <ListView x:Name="lwAssigned" Height="260"/>
         </StackPanel>    

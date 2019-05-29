@@ -30,11 +30,15 @@ namespace AspitAktivitet.GUI
                 Week.Items.Add("Uge " + (i + 1));
             }
             Week.SelectedIndex = Util.getWeek(DateTime.Now) -1;
+            load();
         }
 
-        private void Week_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void load()
         {
-
+            using (DB db = new DB())
+            {
+                lwUnassigned.DataContext = db.Activities.ToList();
+            }
         }
     }
 }
