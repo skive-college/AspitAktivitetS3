@@ -40,5 +40,14 @@ namespace AspitAktivitet.GUI
                 lwUnassigned.DataContext = db.Activities.ToList();
             }
         }
+
+        private void CmbAssigned_Click(object sender, RoutedEventArgs e)
+        {
+            //not done_______________________________________________________________________
+            if (lwUnassigned != lwAssigned)
+            {
+                lwAssigned.Items.Add(lwUnassigned.SelectedItem);
+            }
+        }
     }
 }
