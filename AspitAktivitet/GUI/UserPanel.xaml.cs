@@ -1,4 +1,5 @@
 ﻿using AspitAktivitet.Healpers;
+using AspitAktivitet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,12 +22,22 @@ namespace AspitAktivitet.GUI
     /// </summary>
     public partial class UserPanel : UserControl
     {
-        public UserPanel()
+        User current;
+        MainWindow parrent;
+        public UserPanel(User u, MainWindow mW)
         {
+            parrent = mW;
+            current = u;
             InitializeComponent();
+            lblBruger.Content = current.Name;
             lblWeek.Content = Util.getWeek(DateTime.Now);
 
             activityPanel.Children.Add(new RadioButton() {Content = "Lav dynamisk"});
+        }
+
+        private void CmdSignOut_Click(object sender, RoutedEventArgs e)
+        {
+            parrent.logout();
         }
     }
 }
