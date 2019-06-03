@@ -39,8 +39,8 @@ namespace AspitAktivitet.GUI
             Week.SelectedIndex = Util.getWeek(DateTime.Now) - 1;
             load();
         }
-        
-        private void load()
+        //-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-kan ikke klikke på en Unassigned-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+        public void load()
         {
             using (DB db = new DB())
             {
@@ -128,6 +128,7 @@ namespace AspitAktivitet.GUI
         private void Grid_GotFocus(object sender, RoutedEventArgs e)
         {
             load();
+            
         }
     }
 }
