@@ -51,10 +51,16 @@ namespace AspitAktivitet.GUI
                 u = (db.Users.Where(o => o.Name == us.Name && o.Password == us.Password)).FirstOrDefault();
 
             }
-            if(u != null)
+
+            if (u != null)
             {
                 txtUsername.Text = "";
                 txtPassword.Password = "";
+            }
+            else
+            {
+                string text = "Forkerte Login!";
+                MessageBox.Show(text, "Install information", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             parent.LoginSucces(u);
         }
