@@ -32,18 +32,15 @@
         <StackPanel Grid.Column="1">
             <Label Content="Liste af brugere"/>
             <ListView x:Name="lwUsers" ItemsSource="{Binding}" Height="250" SelectionChanged="LwUsers_SelectionChanged">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Content="{Binding Name}"/>
-                            <Label Grid.Column="1" Content="{Binding Admin}"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Navn" 
+                                    Width="150" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Admin" 
+                                    Width="150" DisplayMemberBinding="{Binding Admin}"/>
+                    </GridView>
+                </ListView.View>
+                
             </ListView>
             <Grid>
                 <Grid.ColumnDefinitions>

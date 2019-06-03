@@ -6,8 +6,13 @@
              xmlns:local="clr-namespace:AspitAktivitet.GUI"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <TabControl Height="360">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="cmdLogout" Content="Log ud" Grid.Row="0" Margin="0 10 10 -20" Panel.ZIndex="10" Click="CmdLogout_Click"/>
+        <TabControl Grid.Row="1" Height="360">
             <TabItem Header="Plan">
                 <local:AdminPlans/>
             </TabItem>
@@ -18,6 +23,5 @@
                 <local:AdminActivities/>
             </TabItem>
         </TabControl>
-        <Button x:Name="cmdLogout" Content="Log ud" VerticalAlignment="Bottom" Click="CmdLogout_Click"/>
-    </StackPanel>
+    </Grid>
 </UserControl>

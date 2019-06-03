@@ -94,5 +94,35 @@ namespace AspitAktivitet.GUI
         {
             loadPlaned();
         }
+
+        private void CmbUnassigned_Click(object sender, RoutedEventArgs e)
+        {
+            if (lwAssigned.SelectedIndex != -1)
+            {
+                using (DB db = new DB())
+                {
+                    try
+                    {
+                        DateTime d = (Week.SelectedItem as DateWrapper).Date;
+                        Activity a = lwAssigned.SelectedItem as Activity;
+
+                        Planned p = new Planned() { ActivtyID = a.ID, Date = d };
+
+                        db.PlannedActivities.Attach(p);
+                        db.PlannedActivities.Remove(p);
+                        db.SaveChanges();
+
+                        loadPlaned();
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+
+                }
+            }
+        }
     }
 }
