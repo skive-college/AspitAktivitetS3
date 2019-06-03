@@ -12,15 +12,12 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Button x:Name="cmdLogout" Content="Log ud" Grid.Row="0" Margin="0 10 10 -20" Panel.ZIndex="10" Click="CmdLogout_Click"/>
-        <TabControl Grid.Row="1" Height="360">
-            <TabItem Header="Plan">
-                <local:AdminPlans/>
+        <TabControl x:Name="TabControler" Grid.Row="1" Height="360" SelectionChanged="TabControler_SelectionChanged">
+            <TabItem x:Name="TabPlan" Header="Plan" >                               
             </TabItem>
-            <TabItem Header="Bruger">
-                <local:AdminUsers/>
+            <TabItem x:Name="TabBruger" Header="Bruger">
             </TabItem>
-            <TabItem Header="Aktiviteter">
-                <local:AdminActivities/>
+            <TabItem x:Name="TabAktivitet" Header="Aktiviteter">                
             </TabItem>
         </TabControl>
     </Grid>

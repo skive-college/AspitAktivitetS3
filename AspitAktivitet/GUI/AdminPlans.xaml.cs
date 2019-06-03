@@ -48,7 +48,7 @@ namespace AspitAktivitet.GUI
             }
         }
 
-        private void loadPlaned()
+        public void loadPlaned()
         {
             using (DB db = new DB())
             {
@@ -127,7 +127,8 @@ namespace AspitAktivitet.GUI
 
         private void Grid_GotFocus(object sender, RoutedEventArgs e)
         {
-            load();
+            //load();
+            //lavet på en anden måde se AdminPanel
             
         }
     }
