@@ -88,6 +88,7 @@ namespace AspitAktivitet.GUI
             }
             cmdUpdate.IsEnabled = true;
             cmdCreate.IsEnabled = false;
+            cmdDelete.IsEnabled = false;
         }
 
         private void CmdUpdate_Click(object sender, RoutedEventArgs e)
@@ -116,6 +117,7 @@ namespace AspitAktivitet.GUI
             }
             cmdUpdate.IsEnabled = false;
             cmdCreate.IsEnabled = true;
+            cmdDelete.IsEnabled = true;
         }
 
         private void LwUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)

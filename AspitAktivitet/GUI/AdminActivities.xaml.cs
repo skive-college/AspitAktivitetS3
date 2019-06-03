@@ -51,5 +51,21 @@ namespace AspitAktivitet.GUI
                 load();
             }
         }
+
+        private void CmdDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (lwActivities.SelectedIndex != -1)
+            {
+                Activity a = lwActivities.SelectedItem as Activity;
+
+                using (DB db = new DB())
+                {
+                    db.Activities.Attach(a);
+                    db.Activities.Remove(a);
+                    db.SaveChanges();
+                }
+                load();
+            }
+        }
     }
 }
