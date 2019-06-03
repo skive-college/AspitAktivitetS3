@@ -60,7 +60,7 @@ namespace AspitAktivitet.GUI
             else
             {
                 string text = "Forkerte Login!";
-                MessageBox.Show(text, "Install information", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(text, "Fejl", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             parent.LoginSucces(u);
         }
