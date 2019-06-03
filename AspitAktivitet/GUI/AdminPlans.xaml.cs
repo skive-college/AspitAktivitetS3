@@ -124,5 +124,10 @@ namespace AspitAktivitet.GUI
                 }
             }
         }
+
+        private void Grid_GotFocus(object sender, RoutedEventArgs e)
+        {
+            load();
+        }
     }
 }
