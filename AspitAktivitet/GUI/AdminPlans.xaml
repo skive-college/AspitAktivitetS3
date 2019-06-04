@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
              
-    <Grid GotFocus="Grid_GotFocus">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="*"/>
@@ -29,18 +29,27 @@
         </StackPanel>
         <StackPanel Grid.Column="2">
             <Label Content="Uge"/>
-            <ComboBox x:Name="Week" ItemsSource="{Binding}" SelectionChanged="Week_SelectionChanged">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Margin="0">
-                            <Label  Content="Uge: "/>
-                            <Label Content="{Binding Week}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="Week" Grid.Column="0" ItemsSource="{Binding}" SelectionChanged="Week_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="0">
+                                    <Label  Content="Uge: "/>
+                                    <Label Content="{Binding Week}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Button x:Name="Print" Grid.Column="1" Content="Tilmeldinger" Height="20" VerticalAlignment="Bottom" Click="Print_Click"/>
+                </Grid>
+            </StackPanel>
             <Label Content="Tildelt"/>
-            <ListView x:Name="lwAssigned" ItemsSource="{Binding}" Height="226">
+            <ListView x:Name="lwAssigned" ItemsSource="{Binding}" Height="206">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Label Content="{Binding Name}"/>
