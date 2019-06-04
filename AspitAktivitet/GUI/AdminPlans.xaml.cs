@@ -125,10 +125,8 @@ namespace AspitAktivitet.GUI
             }
         }
 
-        private void Grid_GotFocus(object sender, RoutedEventArgs e)
+        private void Print_Click(object sender, RoutedEventArgs e)
         {
-            //load();
-            //lavet på en anden måde se AdminPanel
             
         }
     }
