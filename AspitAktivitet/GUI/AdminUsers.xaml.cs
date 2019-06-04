@@ -38,21 +38,29 @@ namespace AspitAktivitet.GUI
         {
             if (txtName.Text != "" && txtPassword.Text != "")
             {
-                using (DB db = new DB())
+                try
                 {
-                    bool admin = false;
-                    if (cbAdmin.IsChecked == true)
+                    using (DB db = new DB())
                     {
-                        admin = true;
-                    }
-                    User u = new User() { Name = txtName.Text, Password = txtPassword.Text, Admin = admin };
+                        bool admin = false;
+                        if (cbAdmin.IsChecked == true)
+                        {
+                            admin = true;
+                        }
+                        User u = new User() { Name = txtName.Text, Password = txtPassword.Text, Admin = admin };
 
-                    db.Users.Add(u);
-                    db.SaveChanges();
-                    txtName.Text = "";
-                    txtPassword.Text = "";
-                    cbAdmin.IsChecked = false;                }
-                load();
+                        db.Users.Add(u);
+                        db.SaveChanges();
+                        txtName.Text = "";
+                        txtPassword.Text = "";
+                        cbAdmin.IsChecked = false;
+                    }
+                    load();
+                }
+                catch (Exception)
+                {
+                    //giv Besked om fejl
+                }
             }
         }
 

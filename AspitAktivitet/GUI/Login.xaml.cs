@@ -49,7 +49,17 @@ namespace AspitAktivitet.GUI
                     us.Password = txtPassword.Password;
                 }
                 u = (db.Users.Where(o => o.Name == us.Name && o.Password == us.Password)).FirstOrDefault();
-
+                if(u.Password == "password" && u.Name == "Admin")
+                {
+                    DialogPassword dialog = new DialogPassword();
+                   
+                    if (dialog.ShowDialog() == true)
+                    {                        
+                        var user = db.Users.SingleOrDefault(dbu => dbu.Name == u.Name);
+                        user.Password = dialog.Password; ;
+                        db.SaveChanges();
+                    }
+                }
             }
 
             if (u != null)
