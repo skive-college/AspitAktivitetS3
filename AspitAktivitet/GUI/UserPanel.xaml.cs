@@ -24,6 +24,7 @@ namespace AspitAktivitet.GUI
     {
         User current;
         MainWindow parrent;
+        Activity a;
         public UserPanel(User u, MainWindow mW)
         {
             parrent = mW;
@@ -36,20 +37,32 @@ namespace AspitAktivitet.GUI
             foreach(Activity r in db.GetOffers(DateTime.Now))
             {
                 RadioButton rd = new RadioButton();
+                rd.Checked += new RoutedEventHandler(rb_Checked);
                 Thickness margin = rd.Margin;
                 margin.Left = 10;
                 margin.Bottom = 10;
                 rd.Margin = margin;
-                rd.Content = r.Name;
+                Binding b = new Binding("Name");
+                b.Source = r;
+                rd.SetBinding(RadioButton.ContentProperty, b);
 
                 activityPanel.Children.Add(rd);
             }
             
         }
+        void rb_Checked(object sender, RoutedEventArgs e)
+        {
+            a = ((sender as RadioButton).Content as Activity);
+        }
 
         private void CmdSignOut_Click(object sender, RoutedEventArgs e)
         {
             parrent.logout();
+        }
+
+        private void CmdReg_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
