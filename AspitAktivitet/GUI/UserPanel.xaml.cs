@@ -67,10 +67,14 @@ namespace AspitAktivitet.GUI
             {
                 using (DB db = new DB())
                 {
-                    Activity a = new Activity();
+                    Register r = new Register();
 
-                    db.Registrations.Add(a);
+                    r.UserID = current.ID;
+                    r.ActivityID = a.ID;
+                    r.Date = DateTime.Now;
+                    db.Registrations.Add(r);
                     db.SaveChanges();
+                    MessageBox.Show("Tilmeldt");
                 }
             }
             catch (Exception)
