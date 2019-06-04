@@ -80,6 +80,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI\DialogPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,6 +111,9 @@
     </Compile>
     <Compile Include="GUI\AdminUsers.xaml.cs">
       <DependentUpon>AdminUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DialogPassword.xaml.cs">
+      <DependentUpon>DialogPassword.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>

@@ -40,15 +40,23 @@ namespace AspitAktivitet.GUI
         {
             if (txtName.Text != "")
             {
-                using (DB db = new DB())
+                try
                 {
-                    Activity a = new Activity() { Name = txtName.Text };
+                    using (DB db = new DB())
+                    {
+                        Activity a = new Activity() { Name = txtName.Text };
 
-                    db.Activities.Add(a);
-                    db.SaveChanges();
-                    txtName.Text = "";
+                        db.Activities.Add(a);
+                        db.SaveChanges();
+                        txtName.Text = "";
+                    }
+                    load();
                 }
-                load();
+                catch (Exception)
+                {
+
+                    //giv besked om Fejl
+                }
             }
         }
 
