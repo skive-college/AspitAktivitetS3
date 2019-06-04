@@ -43,7 +43,7 @@ namespace AspitAktivitet.GUI
                 margin.Bottom = 10;
                 rd.Margin = margin;
                 Binding b = new Binding("Name");
-                b.Source = r;
+                rd.DataContext = r;
                 rd.SetBinding(RadioButton.ContentProperty, b);
 
                 activityPanel.Children.Add(rd);
@@ -52,7 +52,7 @@ namespace AspitAktivitet.GUI
         }
         void rb_Checked(object sender, RoutedEventArgs e)
         {
-            a = ((sender as RadioButton).Content as Activity);
+            a = (sender as RadioButton).DataContext as Activity;
         }
 
         private void CmdSignOut_Click(object sender, RoutedEventArgs e)
