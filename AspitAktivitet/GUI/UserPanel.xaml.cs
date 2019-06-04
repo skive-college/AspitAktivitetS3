@@ -2,6 +2,8 @@
 using AspitAktivitet.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +34,7 @@ namespace AspitAktivitet.GUI
             InitializeComponent();
             lblBruger.Content = current.Name;
             lblWeek.Content = Util.getWeek(DateTime.Now);
-
+            Register reg = FindReg();
             DB db = new DB();
             foreach(Activity r in db.GetOffers(DateTime.Now))
             {
@@ -45,11 +47,42 @@ namespace AspitAktivitet.GUI
                 Binding b = new Binding("Name");
                 rd.DataContext = r;
                 rd.SetBinding(RadioButton.ContentProperty, b);
-
+                if (reg != null && r.ID == reg.ActivityID)
+                {
+                    rd.IsChecked = true;
+                }
                 activityPanel.Children.Add(rd);
             }
             
         }
+
+        private Register FindReg()
+        {
+            Register reg = null;
+
+            using (DB db = new DB())
+            {
+                DateTime nu = DateTime.Now;
+                int uge = Util.getWeek(nu);
+
+                var quary = from r in db.Registrations
+                            where nu.Year == r.Date.Year
+                            && r.UserID == current.ID
+                            select r;
+
+                foreach(Register re in quary.ToList())
+                {
+                    if(uge == Util.getWeek(re.Date))
+                    {
+                        reg = re;
+                    }
+                }
+                
+
+            }
+            return reg;
+        }
+
         void rb_Checked(object sender, RoutedEventArgs e)
         {
             a = (sender as RadioButton).DataContext as Activity;
@@ -62,11 +95,12 @@ namespace AspitAktivitet.GUI
 
         private void CmdReg_Click(object sender, RoutedEventArgs e)
         {
-            
             try
             {
                 using (DB db = new DB())
                 {
+                    DeleteIfExist();
+
                     Register r = new Register();
 
                     r.UserID = current.ID;
@@ -74,14 +108,21 @@ namespace AspitAktivitet.GUI
                     r.Date = DateTime.Now;
                     db.Registrations.Add(r);
                     db.SaveChanges();
-                    MessageBox.Show("Tilmeldt");
+                    MessageBox.Show($"du er nu tilmeldt {a.Name}", "Tilmeldt");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 //giv besked om Fejl
             }
+        }
+
+        private void DeleteIfExist()
+        {
+            Register re = FindReg();
+
+
         }
     }
 }
