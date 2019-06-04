@@ -63,6 +63,21 @@ namespace AspitAktivitet.GUI
         private void CmdReg_Click(object sender, RoutedEventArgs e)
         {
             
+            try
+            {
+                using (DB db = new DB())
+                {
+                    Activity a = new Activity();
+
+                    db.Registrations.Add(a);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                //giv besked om Fejl
+            }
         }
     }
 }
