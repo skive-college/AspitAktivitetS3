@@ -33,18 +33,20 @@ namespace AspitAktivitet.Healpers
             return Retur;
         }
 
-        public void Joined(int week)
+        public List<Tilmeldt> Joined(DateWrapper date)
         {
             var quary = from r in Registrations
                         join a in Activities on r.ActivityID equals a.ID
                         join u in Users on r.UserID equals u.ID
                         join p in PlannedActivities on r.ActivityID equals p.ActivtyID
-                        where week == p.WeekNumber
-                        select new
+                        where date.Week == p.WeekNumber
+                        select new Tilmeldt
                         {
                             aname = a.Name,
                             uname = u.Name
                         };
+
+            return quary.ToList();
 
 
         }

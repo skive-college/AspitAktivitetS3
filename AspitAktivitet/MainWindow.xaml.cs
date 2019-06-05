@@ -1,5 +1,4 @@
 ﻿using AspitAktivitet.GUI;
-using AspitAktivitet.Healpers;
 using AspitAktivitet.Models;
 using System;
 using System.Collections.Generic;
@@ -15,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AspitAktivitet.Healpers;
 
 namespace AspitAktivitet
 {
@@ -24,7 +24,6 @@ namespace AspitAktivitet
     public partial class MainWindow : Window
     {
         Login l;
-        User user;
         public MainWindow()
         {
             InitializeComponent();

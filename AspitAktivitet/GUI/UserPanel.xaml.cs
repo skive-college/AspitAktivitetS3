@@ -1,5 +1,4 @@
-﻿using AspitAktivitet.Healpers;
-using AspitAktivitet.Models;
+﻿using AspitAktivitet.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AspitAktivitet.Healpers;
 
 namespace AspitAktivitet.GUI
 {
@@ -50,6 +50,7 @@ namespace AspitAktivitet.GUI
                 if (reg != null && r.ID == reg.ActivityID)
                 {
                     rd.IsChecked = true;
+                    cmdTilmeld.IsEnabled = false;
                 }
                 activityPanel.Children.Add(rd);
             }
@@ -99,7 +100,7 @@ namespace AspitAktivitet.GUI
             {
                 using (DB db = new DB())
                 {
-                    DeleteIfExist();
+                    
 
                     Register r = new Register();
 
@@ -109,6 +110,7 @@ namespace AspitAktivitet.GUI
                     db.Registrations.Add(r);
                     db.SaveChanges();
                     MessageBox.Show($"du er nu tilmeldt {a.Name}", "Tilmeldt");
+                    cmdTilmeld.IsEnabled = false;
                 }
             }
             catch (Exception ex)
@@ -118,11 +120,6 @@ namespace AspitAktivitet.GUI
             }
         }
 
-        private void DeleteIfExist()
-        {
-            Register re = FindReg();
-
-
-        }
+       
     }
 }

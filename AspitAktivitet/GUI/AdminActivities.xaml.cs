@@ -1,5 +1,4 @@
-﻿using AspitAktivitet.Healpers;
-using AspitAktivitet.Models;
+﻿using AspitAktivitet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AspitAktivitet.Healpers;
 
 namespace AspitAktivitet.GUI
 {

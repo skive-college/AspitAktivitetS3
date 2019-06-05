@@ -1,5 +1,4 @@
-﻿using AspitAktivitet.Healpers;
-using AspitAktivitet.Models;
+﻿using AspitAktivitet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AspitAktivitet.Healpers;
 
 namespace AspitAktivitet.GUI
 {
@@ -127,7 +127,11 @@ namespace AspitAktivitet.GUI
 
         private void Print_Click(object sender, RoutedEventArgs e)
         {
-            
+            DB db = new DB();
+            DateWrapper d = (Week.SelectedItem as DateWrapper);
+            List<Tilmeldt> tilmeldte = db.Joined(d);
+            FileHandler fh = new FileHandler();
+            fh.CreatFileAndOpen(tilmeldte, d);
         }
     }
 }
